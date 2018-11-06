@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="btn-group">
+    <button [routerLink]='["create"]' class="btn btn-primary">Create new employee</button>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Start Date</th>
+        <th>Job Type</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of _employees">
+        <td>{{employee.name}}</td>
+        <td>{{employee.description}}</td>
+        <td>{{employee.startDate}}</td>
+        <td>{{_jobTypesDisplay[employee.jobType]}}</td>
+        <td>
+          <button class="btn btn-danger" (click)="deleteEmployee(employee.id)">Delete</button>
+          <button [routerLink]='["update/" + employee.id]' class="btn btn-primary">Update</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
